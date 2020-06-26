@@ -1,3 +1,184 @@
-body {
-  //   background: red;
+// color
+$blue: #479bf5;
+$gray: #afb5bb;
+$light-gray: #ccc;
+$navy: #2e3136;
+
+// default
+* {
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+.wrapper {
+  width: 480px;
+  padding: 2.5rem;
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
+}
+
+h1 {
+  margin: 0.25rem 0;
+  font-size: 1.5rem;
+}
+
+.desc {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  &-blue {
+    color: $blue;
+  }
+  &-gray {
+    color: $gray;
+  }
+}
+
+// form
+#phone-identification-form {
+  margin: 2rem 0;
+
+  & > div {
+    margin-bottom: 2rem;
+  }
+}
+
+label {
+  color: $gray;
+  font-size: 0.875rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid $light-gray;
+  font-size: 1.5rem;
+  padding: 0.25rem 0.125rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $gray;
+  }
+}
+
+.desc-notice {
+  display: flex;
+}
+
+.ico-question {
+  display: block;
+  mask-image: url(./question-circle-regular.svg);
+  background-color: $gray;
+  mask-repeat: no-repeat;
+  width: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+// 약관 목록
+fieldset {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 0;
+  padding: 2rem 1rem;
+
+  legend {
+    display: none;
+  }
+}
+
+.item-check {
+  display: flex;
+  margin-bottom: 1rem;
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    margin-right: 1rem;
+  }
+
+  label {
+    padding: 0 0 0 24px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 0;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 6px;
+      height: 12px;
+      border-bottom: 2px solid $light-gray;
+      border-right: 2px solid $light-gray;
+      transform: rotate(45deg);
+      z-index: 2;
+      transition: border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+
+  // Checked
+  input:checked + label {
+    color: $navy;
+    &:after {
+      border-color: $navy;
+    }
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &-all {
+    margin-top: 2rem;
+    label {
+      color: $navy;
+      font-size: 1rem;
+      font-weight: bold;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: -9px;
+        width: 24px;
+        height: 24px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        top: -5.5px;
+      }
+    }
+
+    // Checked
+    input:checked + label {
+      &:before {
+        border-color: $navy;
+      }
+    }
+  }
+}
+
+button {
+  width: 100%;
+  border: none;
+  color: white;
+  background: $navy;
+  border-radius: 8px;
+  height: 50px;
+  cursor: pointer;
+  &:hover {
+    background: lighten($navy, 20%);
+  }
 }

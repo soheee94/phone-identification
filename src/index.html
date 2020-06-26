@@ -6,6 +6,71 @@
     <title>휴대폰 본인인증</title>
   </head>
   <body>
-    <h1>입력 정보</h1>
+    <div class="wrapper">
+      <h1>입력 정보</h1>
+      <p class="desc desc-blue">본인 명의의 휴대폰 정보를 입력하세요.</p>
+      <!-- form -->
+      <form id="phone-identification-form">
+        <div class="input-group">
+          <label>통신사</label>
+          <select>
+            <option>SKT</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="phone">휴대폰 번호</label>
+          <input type="number" placeholder="휴대폰 번호" id="phone" />
+        </div>
+        <div class="input-group">
+          <label for="id-number">주민등록번호</label>
+          <input type="number" placeholder="주민등록번호" id="id-number" />
+        </div>
+        <div class="input-group">
+          <label for="name">이름</label>
+          <input type="text" placeholder="이름" id="name" />
+        </div>
+        <div class="desc desc-gray desc-notice">
+          <span class="ico-question"></span>
+          <p>
+            모든 정보가 올바르게 입력되었음에도 인증번호 요청이 되지 않는 경우 가입하신 통신사에
+            문의해주세요.
+          </p>
+        </div>
+        <fieldset>
+          <legend>약관 목록</legend>
+          <div class="item-check">
+            <input type="checkbox" id="agree-01" />
+            <label for="agree-01">
+              본인확인 이용동의
+            </label>
+          </div>
+          <div class="item-check">
+            <input type="checkbox" id="agree-02" />
+            <label for="agree-02">
+              개인정보 수집/이용/취급 위탁동의
+            </label>
+          </div>
+          <div class="item-check">
+            <input type="checkbox" id="agree-03" />
+            <label for="agree-03">
+              고유식별번호 처리 동의
+            </label>
+          </div>
+          <div class="item-check">
+            <input type="checkbox" id="agree-04" />
+            <label for="agree-04">
+              (선택) 카카오 플러스 친구 추가 동의
+            </label>
+          </div>
+          <div class="item-check item-check-all">
+            <input type="checkbox" id="agree-all" />
+            <label for="agree-all">
+              전체 동의하기
+            </label>
+          </div>
+        </fieldset>
+        <button type="submit">인증번호 요청</button>
+      </form>
+    </div>
   </body>
 </html>
