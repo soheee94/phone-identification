@@ -86,6 +86,16 @@ select {
   margin-right: 0.5rem;
 }
 
+.input-group.validation-error {
+  label {
+    color: red;
+  }
+
+  input {
+    border-color: red;
+  }
+}
+
 // 약관 목록
 fieldset {
   border: none;
