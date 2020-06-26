@@ -27,6 +27,13 @@ window.onload = function () {
     }
   };
 
+  inputPhone.onblur = function () {
+    const pattern = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+    if (!pattern.test(this.value)) {
+      validationError(this.parentElement);
+    }
+  };
+
   const selectTelecom = this.document.getElementById("select-telecom");
   for (let telecom of telecoms) {
     let option = document.createElement("option");
