@@ -1,6 +1,7 @@
 import "@babel/polyfill";
 import "normalize.css";
 import "./index.scss";
+import telecoms from "./data/telecoms";
 
 window.onload = function () {
   const inputName = document.getElementById("input-name");
@@ -10,6 +11,14 @@ window.onload = function () {
   inputIdNumber.onkeyup = function () {
     this.value = checkInputIdNumber(this.value);
   };
+
+  const selectTelecom = this.document.getElementById("select-telecom");
+  for (let telecom of telecoms) {
+    let option = document.createElement("option");
+    option.text = telecom.description;
+    option.id = telecom.code;
+    selectTelecom.add(option);
+  }
 };
 
 const check_num = /[0-9]/; // 숫자
