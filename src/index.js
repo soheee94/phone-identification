@@ -10,19 +10,37 @@ window.onload = function () {
   const inputIdNumber = document.getElementById("input-id-number");
   inputIdNumber.onkeyup = function () {
     this.value = checkInputIdNumber(this.value);
+
+    // 주민등록번호 6+1자리 입력 후, 이름으로 이동
+    if (this.value.length === 8) {
+      inputName.focus();
+    }
+  };
+
+  const inputPhone = document.getElementById("input-phone");
+  inputPhone.onkeyup = function () {
+    this.value = checkInputPhone(this.value);
+
+    // 휴대폰 번호 11자리 입력 후, 주민등록번호로 이동
+    if (this.value.length === 13) {
+      inputIdNumber.focus();
+    }
   };
 
   const selectTelecom = this.document.getElementById("select-telecom");
   for (let telecom of telecoms) {
     let option = document.createElement("option");
     option.text = telecom.description;
-    option.id = telecom.code;
+    option.value = telecom.code;
     selectTelecom.add(option);
   }
+  selectTelecom.onchange = function () {
+    const selectedValue = selectTelecom.options[selectTelecom.selectedIndex].value;
 
-  const inputPhone = document.getElementById("input-phone");
-  inputPhone.onkeyup = function () {
-    this.value = checkInputPhone(this.value);
+    // 통신사 선택 후, 휴대폰 번호로 이동
+    if (selectedValue !== "") {
+      inputPhone.focus();
+    }
   };
 };
 
