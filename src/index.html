@@ -12,31 +12,40 @@
       <!-- form -->
       <form id="phone-identification-form">
         <div class="input-group">
-          <label for="select-telecom">통신사</label>
-          <select id="select-telecom" required>
+          <label for="carrierCode">통신사</label>
+          <select id="carrierCode" required name="carrierCode">
             <option value="" selected disabled hidden>통신사 선택</option>
           </select>
         </div>
         <div class="input-group">
-          <label for="input-phone">휴대폰 번호</label>
-          <input type="text" placeholder="휴대폰 번호" id="input-phone" maxlength="13" required />
-        </div>
-        <div class="input-group">
-          <label for="input-id-number">주민등록번호</label>
+          <label for="phone">휴대폰 번호</label>
           <input
             type="text"
-            placeholder="주민등록번호"
-            id="input-id-number"
-            maxlength="8"
+            placeholder="휴대폰 번호"
+            id="phone"
+            name="phone"
+            maxlength="13"
             required
           />
         </div>
         <div class="input-group">
-          <label for="input-name">이름</label>
+          <label for="registerNumber">주민등록번호</label>
+          <input
+            type="text"
+            placeholder="주민등록번호"
+            id="registerNumber"
+            name="registerNumber"
+            maxlength="7"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="name">이름</label>
           <input
             type="text"
             placeholder="이름"
-            id="input-name"
+            id="name"
+            name="name"
             maxlength="10"
             style="ime-mode: auto;"
             required
@@ -53,12 +62,12 @@
           <legend>약관 목록</legend>
         </fieldset>
         <div class="item-check item-check-all">
-          <input type="checkbox" id="agree-all" />
-          <label for="agree-all">
+          <input type="checkbox" id="terms-all" />
+          <label for="terms-all">
             전체 동의하기
           </label>
         </div>
-        <button type="submit" class="disabled">인증번호 요청</button>
+        <button type="submit" class="disabled" id="submit-btn">인증번호 요청</button>
       </form>
     </div>
   </body>
