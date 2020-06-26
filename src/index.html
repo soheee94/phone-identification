@@ -13,17 +13,23 @@
       <form id="phone-identification-form">
         <div class="input-group">
           <label for="select-telecom">통신사</label>
-          <select id="select-telecom">
+          <select id="select-telecom" required>
             <option value="" selected disabled hidden>통신사 선택</option>
           </select>
         </div>
         <div class="input-group">
           <label for="input-phone">휴대폰 번호</label>
-          <input type="text" placeholder="휴대폰 번호" id="input-phone" maxlength="13" />
+          <input type="text" placeholder="휴대폰 번호" id="input-phone" maxlength="13" required />
         </div>
         <div class="input-group">
           <label for="input-id-number">주민등록번호</label>
-          <input type="text" placeholder="주민등록번호" id="input-id-number" maxlength="8" />
+          <input
+            type="text"
+            placeholder="주민등록번호"
+            id="input-id-number"
+            maxlength="8"
+            required
+          />
         </div>
         <div class="input-group">
           <label for="input-name">이름</label>
@@ -33,6 +39,7 @@
             id="input-name"
             maxlength="10"
             style="ime-mode: auto;"
+            required
           />
         </div>
         <div class="desc desc-gray desc-notice">
@@ -42,40 +49,16 @@
             문의해주세요.
           </p>
         </div>
-        <fieldset>
+        <fieldset id="terms-list">
           <legend>약관 목록</legend>
-          <div class="item-check">
-            <input type="checkbox" id="agree-01" />
-            <label for="agree-01">
-              본인확인 이용동의
-            </label>
-          </div>
-          <div class="item-check">
-            <input type="checkbox" id="agree-02" />
-            <label for="agree-02">
-              개인정보 수집/이용/취급 위탁동의
-            </label>
-          </div>
-          <div class="item-check">
-            <input type="checkbox" id="agree-03" />
-            <label for="agree-03">
-              고유식별번호 처리 동의
-            </label>
-          </div>
-          <div class="item-check">
-            <input type="checkbox" id="agree-04" />
-            <label for="agree-04">
-              (선택) 카카오 플러스 친구 추가 동의
-            </label>
-          </div>
-          <div class="item-check item-check-all">
-            <input type="checkbox" id="agree-all" />
-            <label for="agree-all">
-              전체 동의하기
-            </label>
-          </div>
         </fieldset>
-        <button type="submit">인증번호 요청</button>
+        <div class="item-check item-check-all">
+          <input type="checkbox" id="agree-all" />
+          <label for="agree-all">
+            전체 동의하기
+          </label>
+        </div>
+        <button type="submit" class="disabled">인증번호 요청</button>
       </form>
     </div>
   </body>

@@ -153,7 +153,8 @@ fieldset {
   }
 
   &-all {
-    margin-top: 2rem;
+    padding: 0 1rem;
+    // margin-top: 2rem;
     label {
       color: $navy;
       font-size: 1rem;
@@ -190,5 +191,10 @@ button {
   cursor: pointer;
   &:hover {
     background: lighten($navy, 20%);
+  }
+
+  &.disabled {
+    background: $light-gray;
+    cursor: default;
   }
 }

@@ -2,6 +2,13 @@ import "@babel/polyfill";
 import "normalize.css";
 import "./index.scss";
 import telecoms from "./data/telecoms";
+import termslist from "./data/termslist";
+
+let isValidTelecom = false;
+let isValidPhone = false;
+let isValidIdNumber = false;
+let isValidName = false;
+let isValidTermsAgree = false;
 
 window.onload = function () {
   const inputName = document.getElementById("input-name");
@@ -10,9 +17,10 @@ window.onload = function () {
   const inputIdNumber = document.getElementById("input-id-number");
   inputIdNumber.onkeyup = function () {
     this.value = checkInputIdNumber(this.value);
-
+    isValidIdNumber = false;
     // 주민등록번호 6+1자리 입력 후, 이름으로 이동
     if (this.value.length === 8) {
+      isValidIdNumber = true;
       inputName.focus();
     }
   };
@@ -30,8 +38,10 @@ window.onload = function () {
   inputPhone.onblur = function () {
     const pattern = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
     if (!pattern.test(this.value)) {
+      isValidPhone = false;
       validationError(this.parentElement);
     }
+    isValidPhone = true;
   };
 
   const selectTelecom = this.document.getElementById("select-telecom");
@@ -46,9 +56,52 @@ window.onload = function () {
 
     // 통신사 선택 후, 휴대폰 번호로 이동
     if (selectedValue !== "") {
+      isValidTelecom = true;
       inputPhone.focus();
     }
+    isValidTelecom = false;
   };
+
+  // 약관 목록
+  // 전체 동의
+  const allAgreeCheckbox = document.getElementById("agree-all");
+  allAgreeCheckbox.onclick = function () {
+    var checkboxes = document.querySelectorAll('input[name="agree"]');
+    for (var checkbox of checkboxes) {
+      checkbox.checked = this.checked;
+    }
+  };
+
+  // 체크 확인
+  function isChecked(checkbox) {
+    return checkbox.checked;
+  }
+  const termsList = document.querySelector("#terms-list");
+  for (let terms of termslist) {
+    const { termsId, title, required } = terms;
+    const item = `
+      <div class="item-check">
+        <input type="checkbox" id="agree-${termsId}" name="agree" ${required && `required`} />
+        <label for="agree-${termsId}">
+            ${title}
+        </label>
+      </div>`;
+    let html = new DOMParser().parseFromString(item, "text/html");
+    termsList.append(html.body.firstChild);
+  }
+  termsList.onclick = function (ev) {
+    // 전체 동의 확인
+    const checkBoxes = document.querySelectorAll('input[name="agree"]');
+    const checkBoxesArray = Array.prototype.slice.call(checkBoxes);
+    if (checkBoxesArray.every(isChecked)) {
+      allAgreeCheckbox.checked = true;
+    } else {
+      allAgreeCheckbox.checked = false;
+    }
+  };
+
+  const form = document.getElementById("phone-identification-form");
+  form.onsubmit = function () {};
 };
 
 const check_num = /[0-9]/; // 숫자
@@ -74,9 +127,11 @@ function checkInputName() {
       !check_eng.test(value) &&
       !check_spc.test(value))
   ) {
+    isValidName = true;
     validationSuccess(inputGroup);
     return true;
   } else {
+    isValidName = false;
     validationError(inputGroup);
     return false;
   }
