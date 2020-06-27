@@ -36,9 +36,9 @@ class Input {
       }
       // 다음 input 으로 포커스
       const maxlength = this.getAttribute("maxlength");
-      if (value.length >= maxlength) {
+      if (value.length >= maxlength && input.nextInputNode) {
         // event.target.value = value.substr(0, maxlength);
-        if (input.nextInputNode) input.nextInputNode.focus();
+        input.nextInputNode.focus();
       }
       checkFormValidation();
     });

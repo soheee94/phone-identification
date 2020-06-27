@@ -76,5 +76,9 @@ module.exports = {
       filename: "index.html",
     }),
   ],
-  target: "node",
+  devServer: {
+    contentBase: path.join(__dirname, "public"),
+    hot: true,
+  },
+  target: "web",
 };

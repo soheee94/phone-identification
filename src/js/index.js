@@ -57,11 +57,7 @@ window.onload = function () {
     const checkBoxesArray = Array.prototype.slice.call(checkBoxes);
     checkFormValidation();
     // 전체 동의 자동 선택
-    if (checkBoxesArray.every(isChecked)) {
-      allTermsCheckbox.checked = true;
-    } else {
-      allTermsCheckbox.checked = false;
-    }
+    allTermsCheckbox.checked = checkBoxesArray.every(isChecked);
   };
 
   // form

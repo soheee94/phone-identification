@@ -1,15 +1,8 @@
 export function checkFormValidation() {
   const form = document.getElementById("phone-identification-form");
   const submitButton = document.getElementById("submit-btn");
-
-  // 폼 유효성 검사
-  if (form.checkValidity()) {
-    // 버튼 활성화
-    submitButton.disabled = false;
-  } else {
-    // 버튼 비활성화
-    submitButton.disabled = true;
-  }
+  // 폼 유효성 검사에 따른 제출 버튼 활성화
+  submitButton.disabled = !form.checkValidity();
 }
 
 export function submitForm(e) {

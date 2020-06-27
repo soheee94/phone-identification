@@ -3,9 +3,10 @@ import termslist from "../data/termslist";
 
 export function getCarriersData(select) {
   for (let carrier of carriers) {
+    const { code, description } = carrier;
     let option = document.createElement("option");
-    option.text = carrier.description;
-    option.value = carrier.code;
+    option.text = description;
+    option.value = code;
     select.add(option);
   }
 }
@@ -15,9 +16,9 @@ export function getTermsListData(div) {
     const { termsId, title, required } = terms;
     const item = `
           <div class="item-check">
-            <input type="checkbox" id="terms-${termsId}" name="terms" value="${termsId}"  class="${
-      required && "required-terms"
-    }" ${required && `required`} />
+            <input type="checkbox" id="terms-${termsId}" name="terms" value="${termsId}" ${
+      required && `required`
+    } />
             <label for="terms-${termsId}">
                 ${title}
             </label>
