@@ -79,7 +79,7 @@ select {
 
 .ico-question {
   display: block;
-  mask-image: url(./question-circle-regular.svg);
+  mask-image: url(../asset/question-circle-regular.svg);
   background-color: $gray;
   mask-repeat: no-repeat;
   width: 1.5rem;
@@ -193,7 +193,7 @@ button {
     background: lighten($navy, 20%);
   }
 
-  &.disabled {
+  &:disabled {
     background: $light-gray;
     cursor: default;
   }
