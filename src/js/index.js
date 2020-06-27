@@ -2,7 +2,7 @@ import "@babel/polyfill";
 import "normalize.css";
 import "../style/index.scss";
 import Input from "./input";
-import { nameValidation, phoneValidation } from "./inputValidation";
+import { nameValidation, phoneValidation, registerNumberValidation } from "./inputValidation";
 import { registerNumberFormat, phoneFormat } from "./inputFormat";
 import { getCarriersData, getTermsListData } from "./getData";
 import { checkFormValidation, submitForm } from "./form";
@@ -16,7 +16,12 @@ window.onload = function () {
   const phone = new Input(phoneInput, phoneValidation, phoneFormat, registerNumberInput);
   phone.registerListener();
 
-  const registerNumber = new Input(registerNumberInput, null, registerNumberFormat, nameInput);
+  const registerNumber = new Input(
+    registerNumberInput,
+    registerNumberValidation,
+    registerNumberFormat,
+    nameInput
+  );
   registerNumber.registerListener();
 
   const name = new Input(nameInput, nameValidation);
@@ -60,7 +65,7 @@ window.onload = function () {
     allTermsCheckbox.checked = checkBoxesArray.every(isChecked);
   };
 
-  // form
+  // ------- form
   const form = document.getElementById("phone-identification-form");
   form.onsubmit = e => submitForm(e);
 };

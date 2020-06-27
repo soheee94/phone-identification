@@ -21,6 +21,6 @@ export const phoneFormat = function (value) {
   } else if (value.length < 11) {
     return `${value.substr(0, 3)} ${value.substr(3, 3)} ${value.substr(6)}`;
   } else {
-    return `${value.substr(0, 3)} ${value.substr(3, 4)} ${value.substr(7)}`;
+    return `${value.substr(0, 3)} ${value.substr(3, 4)} ${value.substr(7, 4)}`;
   }
 };

@@ -36,8 +36,7 @@ class Input {
       }
       // 다음 input 으로 포커스
       const maxlength = this.getAttribute("maxlength");
-      if (value.length >= maxlength && input.nextInputNode) {
-        // event.target.value = value.substr(0, maxlength);
+      if (value.length === parseInt(maxlength) && input.nextInputNode) {
         input.nextInputNode.focus();
       }
       checkFormValidation();

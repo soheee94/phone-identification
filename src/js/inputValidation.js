@@ -18,6 +18,11 @@ export const phoneValidation = function (value) {
   return value === "" || pattern.test(value.replace(/ /gi, ""));
 };
 
+export const registerNumberValidation = function (value) {
+  const pattern = /\b(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))-[1-4]{1}\b/;
+  return value === "" || pattern.test(value);
+};
+
 export function validationError(inputGroup) {
   inputGroup.classList.add("invalid");
 }

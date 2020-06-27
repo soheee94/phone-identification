@@ -50,16 +50,13 @@ module.exports = {
         loader: "babel-loader",
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.svg$/,
         use: [
           {
-            loader: "file-loader",
+            loader: "url-loader",
             options: {
-              name() {
-                return "[contenthash].[ext]";
-              },
-
-              esModule: false,
+              // 파일크기 제한(~8kb)
+              limit: 8192,
             },
           },
         ],
